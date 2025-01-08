@@ -3,6 +3,7 @@ import streamlit as st
 from streamlit_lottie import st_lottie, st_lottie_spinner
 import requests
 import os
+ffmpeg_location = "/usr/bin/ffmpeg"
 
 # --- Download Audio ---
 def download_audio(url):
