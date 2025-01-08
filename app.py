@@ -31,7 +31,7 @@ def download_audio(url):
         'progress_hooks': [progress_hook],
         'outtmpl': '%(title)s.%(ext)s',
     }
-    # --- Download Audio ---
+    # --- Download MP3 ---
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         result = ydl.download([url])
         if result == 0:
@@ -57,7 +57,6 @@ def load_lottieurl(url: str):
     return r.json()
 
 lottie_coding = load_lottieurl("https://lottie.host/c44d283b-75aa-487f-a2f7-6b21820b5803/7ZlNDi9ocx.json")
-# lottie_coding = load_lottieurl("https://lottie.host/80d337a2-b5d9-4e17-a621-69974fff939e/cn9dFUYjIZ.json")
 
 def main():
     # --- Header ---
@@ -68,7 +67,6 @@ def main():
             st_lottie_spinner(lottie_coding, speed=1, loop=True, quality="high", height=200, width=200) 
             st_lottie(lottie_coding, speed=1, loop=True, quality="high", height=200, width=200)
 
-    #url = st.text_input('Enter Video URL:')
     url = st.text_input('Enter Video URL:', value="https://youtu.be/GQe7YHqGe8c?si=BbZnZo11usmoJFa6")
 
     # --- Convert to MP3 ---
