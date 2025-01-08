@@ -3,7 +3,43 @@ import streamlit as st
 from streamlit_lottie import st_lottie, st_lottie_spinner
 import requests
 import os
+import platform
+
+# Specify the location of ffmpeg
 ffmpeg_location = "/usr/bin/ffmpeg"
+
+
+# --- Detect Operating System ---
+def get_os():
+    os_name = platform.system().lower()
+    if 'windows' in os_name:
+        return 'windows'
+    elif 'darwin' in os_name:
+        return 'macos'
+    elif 'linux' in os_name:
+        return 'linux'
+    else:
+        return None
+
+# --- Get Default Browser Profile Path ---
+def get_default_profile_path(browser, os_name):
+    home = os.path.expanduser("~")
+    if browser == 'chrome':
+        if os_name == 'windows':
+            return os.path.join(home, 'AppData', 'Local', 'Google', 'Chrome', 'User Data', 'Default')
+        elif os_name == 'macos':
+            return os.path.join(home, 'Library', 'Application Support', 'Google', 'Chrome', 'Default')
+        elif os_name == 'linux':
+            return os.path.join(home, '.config', 'google-chrome', 'Default')
+    elif browser == 'firefox':
+        if os_name == 'windows':
+            return os.path.join(home, 'AppData', 'Roaming', 'Mozilla', 'Firefox', 'Profiles')
+        elif os_name == 'macos':
+            return os.path.join(home, 'Library', 'Application Support', 'Firefox', 'Profiles')
+        elif os_name == 'linux':
+            return os.path.join(home, '.mozilla', 'firefox')
+    # Add paths for other supported browsers as needed
+    return None
 
 # --- Download Audio ---
 def download_audio(url):
@@ -22,7 +58,7 @@ def download_audio(url):
         elif d['status'] == 'finished':
             progress_text.text("Video downloaded. Converting to MP3...")
     
-    ydl_opts = {
+     ydl_opts = {
         'format': 'bestaudio/best',
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
@@ -31,7 +67,10 @@ def download_audio(url):
         }],
         'progress_hooks': [progress_hook],
         'outtmpl': '%(title)s.%(ext)s',
+        'ffmpeg_location': '/usr/bin/ffmpeg',  # Adjust this path as needed
+        'cookiesfrombrowser': f'{browser}:{profile_path}',
     }
+
     # --- Download MP3 ---
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         result = ydl.download([url])
@@ -69,6 +108,16 @@ def main():
             st_lottie(lottie_coding, speed=1, loop=True, quality="high", height=200, width=200)
 
     url = st.text_input('Enter Video URL:', value="https://youtu.be/GQe7YHqGe8c?si=BbZnZo11usmoJFa6")
+
+    os_name = get_os()
+    if not os_name:
+        st.error('Unsupported operating system.')
+        return
+
+    browser = st.selectbox('Select your browser:', ['chrome', 'firefox', 'edge', 'safari', 'opera', 'brave', 'vivaldi', 'whale'])
+    default_profile_path = get_default_profile_path(browser, os_name)
+    profile_path = st.text_input('Enter browser profile path:', value=default_profile_path or '')
+
 
     # --- Convert to MP3 ---
     with st.container():
