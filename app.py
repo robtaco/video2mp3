@@ -58,7 +58,7 @@ def download_audio(url):
         elif d['status'] == 'finished':
             progress_text.text("Video downloaded. Converting to MP3...")
     
-     ydl_opts = {
+    ydl_opts = {
         'format': 'bestaudio/best',
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
