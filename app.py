@@ -75,12 +75,12 @@ def download_audio(url, browser, profile_path):
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         result = ydl.download([url])
         if result == 0:
-            info_dict = ydl.extract_info(url, download=False)
+            info_dict = ydl.extract_info(url, download=True)
             filename = ydl.prepare_filename(info_dict)
             mp3_filename = os.path.splitext(filename)[0] + '.mp3'
             return mp3_filename
         else:
-            st.error('An error occurred during the download.')
+            st.error('An error occurred during the download: {e}')
             return None
 
 def local_css(file_name):
