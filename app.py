@@ -124,7 +124,7 @@ def main():
         if st.button('Convert'):
             if url:
                 with st.spinner('Processing...'):
-                    filename = download_audio(url)
+                    filename = download_audio(url, browser, profile_path)
                     if filename and os.path.exists(filename):
                         with open(filename, 'rb') as file:
                             st.download_button(
