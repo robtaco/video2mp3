@@ -67,7 +67,7 @@ def download_audio(url, browser, profile_path):
         }],
         'progress_hooks': [progress_hook],
         'outtmpl': '%(title)s.%(ext)s',
-        'ffmpeg_location': '/usr/bin/ffmpeg',  # Adjust this path as needed
+        'ffmpeg_location': '/ffmpeg',  # Adjust this path as needed
         'cookiesfrombrowser': f'{browser}:{profile_path}',
     }
 
