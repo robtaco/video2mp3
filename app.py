@@ -42,7 +42,7 @@ def get_default_profile_path(browser, os_name):
     return None
 
 # --- Download Audio ---
-def download_audio(url):
+def download_audio(url, browser, profile_path):
     # Initialize the progress bar
     progress_bar = st.progress(0)
     progress_text = st.empty()
