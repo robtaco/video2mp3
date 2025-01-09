@@ -6,8 +6,7 @@ import os
 import platform
 
 # Specify the location of ffmpeg
-ffmpeg_location = "/ffmpeg"
-
+ffmpeg_location = "/ffmpeg/bin"
 
 # --- Detect Operating System ---
 def get_os():
@@ -67,7 +66,7 @@ def download_audio(url, browser, profile_path):
         }],
         'progress_hooks': [progress_hook],
         'outtmpl': '%(title)s.%(ext)s',
-        'ffmpeg_location': '/ffmpeg',  # Adjust this path as needed
+        'ffmpeg_location': f'{ffmpeg_location}',  # Adjust this path as needed
         'cookiesfrombrowser': f'{browser}:{profile_path}',
     }
 
