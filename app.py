@@ -6,7 +6,7 @@ import os
 import platform
 
 # Specify the location of ffmpeg
-ffmpeg_location = "/usr/bin/ffmpeg"
+ffmpeg_location = "/ffmpeg"
 
 
 # --- Detect Operating System ---
