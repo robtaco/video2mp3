@@ -57,6 +57,7 @@ def download_audio(url, browser, profile_path):
         elif d['status'] == 'finished':
             progress_text.text("Video downloaded. Converting to MP3...")
     
+    st.write({profile_path})
     ydl_opts = {
         'format': 'bestaudio/best',
         'postprocessors': [{
@@ -66,7 +67,7 @@ def download_audio(url, browser, profile_path):
         }],
         'progress_hooks': [progress_hook],
         'outtmpl': '%(title)s.%(ext)s',
-        'ffmpeg_location': f'{ffmpeg_location}',  # Adjust this path as needed
+        'ffmpeg_location': f'{ffmpeg_location}',
         'cookiesfrombrowser': f'{browser}:{profile_path}',
     }
 
