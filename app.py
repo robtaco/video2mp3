@@ -6,7 +6,7 @@ import os
 import platform
 
 # Specify the location of ffmpeg
-ffmpeg_location = "/ffmpeg/bin/ffmpeg"
+ffmpeg_location = "/workspaces/video2mp3/ffmpeg/bin"
 
 # --- Detect Operating System ---
 def get_os():
