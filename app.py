@@ -118,6 +118,7 @@ def main():
     default_profile_path = get_default_profile_path(browser, os_name)
     profile_path = st.text_input('Enter browser profile path:', value=default_profile_path or '')
 
+    st.write(f'browser specification {browser}')
 
     # --- Convert to MP3 ---
     with st.container():
