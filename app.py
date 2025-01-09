@@ -6,7 +6,7 @@ import os
 import platform
 
 # Specify the location of ffmpeg
-ffmpeg_location = "/ffmpeg/bin"
+ffmpeg_location = "/ffmpeg/bin/ffmpeg"
 
 # --- Detect Operating System ---
 def get_os():
