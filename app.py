@@ -58,9 +58,9 @@ def download_audio(url, browser, profile_path):
         elif d['status'] == 'finished':
             progress_text.text("Video downloaded. Converting to MP3...")
     
-    st.write({profile_path}) # for testing
-    st.write({browser}) # for testing
-    st.write({cookies_path}) # for testing
+    #st.write({profile_path}) # for testing
+    #st.write({browser}) # for testing
+    #st.write({cookies_path}) # for testing
 
     ydl_opts = {
         'format': 'bestaudio/best',
