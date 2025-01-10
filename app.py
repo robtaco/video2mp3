@@ -7,7 +7,7 @@ import platform
 
 # Specify the location of ffmpeg
 ffmpeg_location = "/workspaces/video2mp3/ffmpeg/bin"
-cookies_path = "/workspaces/video2mp3/cookies.txt"
+cookies_path = "cookies.txt"
 
 # --- Detect Operating System ---
 def get_os():
