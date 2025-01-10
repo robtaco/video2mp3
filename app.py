@@ -7,6 +7,7 @@ import platform
 
 # Specify the location of ffmpeg
 ffmpeg_location = "/workspaces/video2mp3/ffmpeg/bin"
+cookies_path = "/workspaces/video2mp3"
 
 # --- Detect Operating System ---
 def get_os():
@@ -69,7 +70,7 @@ def download_audio(url, browser, profile_path):
         'progress_hooks': [progress_hook],
         'outtmpl': '%(title)s.%(ext)s',
         'ffmpeg_location': f'{ffmpeg_location}',
-        'cookiesfrombrowser': f'{browser}:{profile_path}',
+        'cookies': f'{browser}:{profile_path}',
     }
 
     # --- Download MP3 ---
