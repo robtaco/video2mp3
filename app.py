@@ -60,6 +60,7 @@ def download_audio(url, browser, profile_path):
     
     st.write({profile_path}) # for testing
     st.write({browser}) # for testing
+    st.write(f'cookies path: {cookies_path}') # for testing
     ydl_opts = {
         'format': 'bestaudio/best',
         'postprocessors': [{
@@ -119,8 +120,6 @@ def main():
     browser = st.selectbox('Select your browser:', ['chrome', 'firefox', 'edge', 'safari', 'opera', 'brave', 'vivaldi', 'whale'])
     default_profile_path = get_default_profile_path(browser, os_name)
     profile_path = st.text_input('Enter browser profile path:', value=default_profile_path or '')
-
-    st.write(f'browser specification {browser}')
 
     # --- Convert to MP3 ---
     with st.container():
