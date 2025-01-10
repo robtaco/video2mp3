@@ -7,7 +7,7 @@ import platform
 
 # Specify the location of ffmpeg
 ffmpeg_location = "/workspaces/video2mp3/ffmpeg/bin"
-cookies_path = "/workspaces/video2mp3"
+cookies_path = "/workspaces/video2mp3/cookies.txt"
 
 # --- Detect Operating System ---
 def get_os():
@@ -61,7 +61,7 @@ def download_audio(url, browser, profile_path):
     st.write({profile_path}) # for testing
     st.write({browser}) # for testing
     st.write({cookies_path}) # for testing
-    
+
     ydl_opts = {
         'format': 'bestaudio/best',
         'postprocessors': [{
