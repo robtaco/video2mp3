@@ -60,7 +60,8 @@ def download_audio(url, browser, profile_path):
     
     st.write({profile_path}) # for testing
     st.write({browser}) # for testing
-    st.write(f'cookies path: {cookies_path}') # for testing
+    st.write({cookies_path}) # for testing
+    
     ydl_opts = {
         'format': 'bestaudio/best',
         'postprocessors': [{
