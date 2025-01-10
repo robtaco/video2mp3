@@ -70,7 +70,7 @@ def download_audio(url, browser, profile_path):
         'progress_hooks': [progress_hook],
         'outtmpl': '%(title)s.%(ext)s',
         'ffmpeg_location': f'{ffmpeg_location}',
-        'cookies': f'{browser}:{profile_path}',
+        'cookies': f'{cookies_path}',
     }
 
     # --- Download MP3 ---
